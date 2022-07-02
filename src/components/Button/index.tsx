@@ -1,17 +1,24 @@
 import React from "react";
 import style from './Button.module.scss'
 
-// Classe extends React.Component --> quer dizer que minha classe era ira ser um componente do React
-class Botao extends React.Component {
 
-    render() {
-        return (
-            <button className={style.botao}>
-                Botão
-            </button>
-        )
-    }
-}
+interface Props {
+    type?: "button" | "submit" | "reset" | undefined,
+    onClick?: () => void,
+    children?: React.ReactNode
+  }
+  
+  function Botao({ onClick, type, children }: Props) {
+    return (
+      <button
+        onClick={onClick}
+        type={type}
+        className={style.botao}
+      >
+        {children}
+      </button>
+    )
+  }
 
 
 export default Botao;
